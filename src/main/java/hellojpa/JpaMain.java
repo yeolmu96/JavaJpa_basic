@@ -12,7 +12,15 @@ public class JpaMain {
 
         try{
 
-            Member
+            Member member = new Member();
+            member.setId(1L);
+            member.setName("member1");
+
+            //1차 캐시에 저장
+            em.persist(member);
+
+            //1차 캐시 조회
+            Member findMember = em.find(Member.class,1L);
 
             tx.commit();
         }catch(Exception e){
